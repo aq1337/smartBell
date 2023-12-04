@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { BellService } from '../../services/bell.service';
 
 @Component({
   selector: 'app-opener',
@@ -8,11 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './opener.component.css'
 })
 export class OpenerComponent {
+  bellService: BellService = inject(BellService)
+
   isDoorOpened = false
   onDoorClick(){
-    this.isDoorOpened = !this.isDoorOpened
+    this.bellService.postOpener("Tür")
+    this.isDoorOpened = true;
     setTimeout(() => {
-      // Blende das outlined-SVG wieder aus
       this.isDoorOpened = false;
     }, 2000);
   }
