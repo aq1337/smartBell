@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './bell.component.css'
 })
 export class BellComponent {
-
+   isBellFilled: boolean = false
+   bellClick() {
+    this.isBellFilled = !this.isBellFilled;
+    setTimeout(() => {
+      // Blende das outlined-SVG wieder aus
+      this.isBellFilled = false;
+    }, 2000);
+   }
 }
