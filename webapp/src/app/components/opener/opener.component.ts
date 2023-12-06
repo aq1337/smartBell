@@ -13,7 +13,7 @@ export class OpenerComponent {
 
   isDoorOpened = false
   onDoorClick(){
-    this.bellService.postOpener("Tür")
+    this.bellService.openDoor("Tür")
     this.isDoorOpened = true;
     setTimeout(() => {
       this.isDoorOpened = false;

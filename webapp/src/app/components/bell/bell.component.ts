@@ -12,7 +12,7 @@ export class BellComponent {
   bellService: BellService = inject(BellService);
   isBellFilled: boolean = false;
   bellClick() {
-    this.bellService.postBell("Glocke")
+    this.bellService.ringBell("Glocke")
     this.isBellFilled = !this.isBellFilled;
     setTimeout(() => {
       // Blende das outlined-SVG wieder aus
