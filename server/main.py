@@ -1,12 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from gpio import ring_bell
+from gpio import open_door
 
 # uvicorn main:app --reload
 # to start the app
 
 app = FastAPI()
 
-origins = ["http://localhost:4200"]
+origins = ["http://localhost:4200","http://localhost:4201"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,9 +23,11 @@ async def root():
 
 @app.post("/openDoor")
 async def root():
-   return {"test":"123"}
+   open_door(1,5)
+   return {"message":"Door opened succesfully"}
 
     
 @app.post("/ringBell")
 async def root():
-    return {"message":"Door opened"}
+    ring_bell(2,2)
+    return {"message":"Bell ring"}
